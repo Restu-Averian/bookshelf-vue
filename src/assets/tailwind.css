@@ -5,12 +5,29 @@
 @tailwind utilities;
 @layer base{
     .input{
-        @apply px-4 py-2 border-2 rounded-md border-gray-400
+        @apply px-4 py-3 border rounded-md border-gray-400 
+        placeholder:text-lg transition-all duration-300 focus:border-primary 
+        hover:border-primary-hover focus:ring-4 focus:ring-primary-hover focus:border-2
+        focus:placeholder:opacity-0 placeholder:text-[#C8C8C8] lg:w-[340px] w-auto
     }
     .button{
-        @apply px-4 py-2 rounded-md
+        @apply px-4 py-3 rounded-md
     }
     .button-primary{
-        @apply bg-blue-500 text-white
+        @apply bg-primary text-white
     }
+    .button-outline-primary{
+        @apply border-primary text-primary border-2 bg-white
+    }
+}
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="file"]{
+      display:none
+  }
+
 }

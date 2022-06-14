@@ -39,6 +39,21 @@ const mutations = {
         */
 
 
+    },
+    updateDataBuku(state,params){
+        let index = state.buku.findIndex(
+            (indexBook)=>{
+                return indexBook.id==params.id
+            }
+        )
+        console.log("tes : ",params)
+        state.buku[index].judul = params.judul
+        state.buku[index].penulis = params.penulis
+        state.buku[index].isRead = params.isRead
+        state.buku[index].tahun = params.tahun
+        state.buku[index].image = params.image
+
+
     }
 }
 const actions = {
@@ -47,6 +62,10 @@ const actions = {
     },
     updateBuku(store,params){
         store.commit("updateStatusBuku",params)
+    },
+    updateDataBuku(store,params){
+        store.commit("updateDataBuku",params)
+
     },
     deleteBuku(store,params){
         store.commit("deleteBuku",params)
