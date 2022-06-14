@@ -17,7 +17,11 @@
       </h1>
       <div class="my-8">
         <div class="grid grid-cols-2 lg:grid-cols-3 gap-10">
+          <div v-if="dataBukuBlumBaca.length == 0">
+            Belum ada buku yang belum dibaca
+          </div>
           <div
+            v-else
             class="text-left"
             v-for="bukuBlm in dataBukuBlumBaca"
             :key="bukuBlm.id"
@@ -179,7 +183,11 @@
       </h1>
       <div class="my-8">
         <div class="grid grid-cols-2 lg:grid-cols-3 gap-10">
+          <div v-if="dataBukuSudahBaca.length == 0">
+            Belum ada buku yang telah dibaca
+          </div>
           <div
+            v-else
             class="text-left"
             v-for="bukuSudah in dataBukuSudahBaca"
             :key="bukuSudah.id"
@@ -211,7 +219,9 @@
               </div>
               <div class="lg:flex lg:flex-col lg:justify-between">
                 <div class="my-2">
-                  <h2 class="text-2xl font-semibold">{{ bukuSudah.judul }}</h2>
+                  <h2 class="text-2xl font-semibold">
+                    {{ bukuSudah.judul }}
+                  </h2>
                   <h4 class="text-xl font-medium">{{ bukuSudah.penulis }}</h4>
                 </div>
                 <p class="text-[#787878]">{{ bukuSudah.tahun }}</p>
