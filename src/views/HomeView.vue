@@ -343,10 +343,34 @@ export default {
       pesanErrorJudul: "",
       pesanErrorPenulis: "",
       pesanErrorTahun: "",
+
+      onLine: navigator.onLine ? true : false,
+      showBackOnline: false,
     };
   },
-
+  watch: {
+    onLine(val) {
+      if (val) {
+        this.showBackOnline = true;
+        setTimeout(() => {
+          this.showBackOnline = false;
+        }, 1000);
+      }
+    },
+  },
+  mounted() {
+    window.addEventListener("online", this.updateOnlineStatus);
+    window.addEventListener("offline", this.updateOnlineStatus);
+  },
+  beforeDestroy() {
+    window.removeEventListener("online", this.updateOnlineStatus);
+    window.removeEventListener("offline", this.updateOnlineStatus);
+  },
   methods: {
+    updateOnlineStatus(e) {
+      const { type } = e;
+      this.onLine = type === "online";
+    },
     openFormForAdd() {
       this.isShowForm = !this.isShowForm;
       this.btnText = "Tambah Buku";
